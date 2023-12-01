@@ -1,0 +1,27 @@
+{
+  "name": "nicojust/aoc",
+  "description": "Advent of Code",
+  "authors": [
+    {
+      "name": "Nekwo",
+      "email": "just.nico@yahoo.de"
+    }
+  ],
+  "require": {
+    "symfony/console": "^7.0",
+    "symfony/filesystem": "^7.0"
+  },
+  "require-dev": {
+    "ergebnis/composer-normalize": "^2.39"
+  },
+  "autoload": {
+    "psr-4": {
+      "Nicojust\\Aoc\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "ergebnis/composer-normalize": true
+    }
+  }
+}

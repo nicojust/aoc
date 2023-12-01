@@ -1,0 +1,1269 @@
+{
+  "_readme": [
+    "This file locks the dependencies of your project to a known state",
+    "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+    "This file is @generated automatically"
+  ],
+  "content-hash": "24a72b4756c860aa32e83fea533dee2c",
+  "packages": [
+    {
+      "name": "psr/container",
+      "version": "2.0.2",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/php-fig/container.git",
+        "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/php-fig/container/zipball/c71ecc56dfe541dbd90c5360474fbc405f8d5963",
+        "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.4.0"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "2.0.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Psr\\Container\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "PHP-FIG",
+          "homepage": "https://www.php-fig.org/"
+        }
+      ],
+      "description": "Common Container Interface (PHP FIG PSR-11)",
+      "homepage": "https://github.com/php-fig/container",
+      "keywords": [
+        "PSR-11",
+        "container",
+        "container-interface",
+        "container-interop",
+        "psr"
+      ],
+      "support": {
+        "issues": "https://github.com/php-fig/container/issues",
+        "source": "https://github.com/php-fig/container/tree/2.0.2"
+      },
+      "time": "2021-11-05T16:47:00+00:00"
+    },
+    {
+      "name": "symfony/console",
+      "version": "v7.0.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/symfony/console.git",
+        "reference": "64e06788686633deb8d9a7c75ab31bcf4b233a26"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/symfony/console/zipball/64e06788686633deb8d9a7c75ab31bcf4b233a26",
+        "reference": "64e06788686633deb8d9a7c75ab31bcf4b233a26",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=8.2",
+        "symfony/polyfill-mbstring": "~1.0",
+        "symfony/service-contracts": "^2.5|^3",
+        "symfony/string": "^6.4|^7.0"
+      },
+      "conflict": {
+        "symfony/dependency-injection": "<6.4",
+        "symfony/dotenv": "<6.4",
+        "symfony/event-dispatcher": "<6.4",
+        "symfony/lock": "<6.4",
+        "symfony/process": "<6.4"
+      },
+      "provide": {
+        "psr/log-implementation": "1.0|2.0|3.0"
+      },
+      "require-dev": {
+        "psr/log": "^1|^2|^3",
+        "symfony/config": "^6.4|^7.0",
+        "symfony/dependency-injection": "^6.4|^7.0",
+        "symfony/event-dispatcher": "^6.4|^7.0",
+        "symfony/http-foundation": "^6.4|^7.0",
+        "symfony/http-kernel": "^6.4|^7.0",
+        "symfony/lock": "^6.4|^7.0",
+        "symfony/messenger": "^6.4|^7.0",
+        "symfony/process": "^6.4|^7.0",
+        "symfony/stopwatch": "^6.4|^7.0",
+        "symfony/var-dumper": "^6.4|^7.0"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "Symfony\\Component\\Console\\": ""
+        },
+        "exclude-from-classmap": [
+          "/Tests/"
+        ]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Fabien Potencier",
+          "email": "fabien@symfony.com"
+        },
+        {
+          "name": "Symfony Community",
+          "homepage": "https://symfony.com/contributors"
+        }
+      ],
+      "description": "Eases the creation of beautiful and testable command line interfaces",
+      "homepage": "https://symfony.com",
+      "keywords": [
+        "cli",
+        "command-line",
+        "console",
+        "terminal"
+      ],
+      "support": {
+        "source": "https://github.com/symfony/console/tree/v7.0.0"
+      },
+      "funding": [
+        {
+          "url": "https://symfony.com/sponsor",
+          "type": "custom"
+        },
+        {
+          "url": "https://github.com/fabpot",
+          "type": "github"
+        },
+        {
+          "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+          "type": "tidelift"
+        }
+      ],
+      "time": "2023-11-20T16:43:42+00:00"
+    },
+    {
+      "name": "symfony/filesystem",
+      "version": "v7.0.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/symfony/filesystem.git",
+        "reference": "7da8ea2362a283771478c5f7729cfcb43a76b8b7"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/symfony/filesystem/zipball/7da8ea2362a283771478c5f7729cfcb43a76b8b7",
+        "reference": "7da8ea2362a283771478c5f7729cfcb43a76b8b7",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=8.2",
+        "symfony/polyfill-ctype": "~1.8",
+        "symfony/polyfill-mbstring": "~1.8"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "Symfony\\Component\\Filesystem\\": ""
+        },
+        "exclude-from-classmap": [
+          "/Tests/"
+        ]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Fabien Potencier",
+          "email": "fabien@symfony.com"
+        },
+        {
+          "name": "Symfony Community",
+          "homepage": "https://symfony.com/contributors"
+        }
+      ],
+      "description": "Provides basic utilities for the filesystem",
+      "homepage": "https://symfony.com",
+      "support": {
+        "source": "https://github.com/symfony/filesystem/tree/v7.0.0"
+      },
+      "funding": [
+        {
+          "url": "https://symfony.com/sponsor",
+          "type": "custom"
+        },
+        {
+          "url": "https://github.com/fabpot",
+          "type": "github"
+        },
+        {
+          "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+          "type": "tidelift"
+        }
+      ],
+      "time": "2023-07-27T06:33:22+00:00"
+    },
+    {
+      "name": "symfony/polyfill-ctype",
+      "version": "v1.28.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/symfony/polyfill-ctype.git",
+        "reference": "ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb",
+        "reference": "ea208ce43cbb04af6867b4fdddb1bdbf84cc28cb",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.1"
+      },
+      "provide": {
+        "ext-ctype": "*"
+      },
+      "suggest": {
+        "ext-ctype": "For best performance"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-main": "1.28-dev"
+        },
+        "thanks": {
+          "name": "symfony/polyfill",
+          "url": "https://github.com/symfony/polyfill"
+        }
+      },
+      "autoload": {
+        "files": [
+          "bootstrap.php"
+        ],
+        "psr-4": {
+          "Symfony\\Polyfill\\Ctype\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Gert de Pagter",
+          "email": "BackEndTea@gmail.com"
+        },
+        {
+          "name": "Symfony Community",
+          "homepage": "https://symfony.com/contributors"
+        }
+      ],
+      "description": "Symfony polyfill for ctype functions",
+      "homepage": "https://symfony.com",
+      "keywords": [
+        "compatibility",
+        "ctype",
+        "polyfill",
+        "portable"
+      ],
+      "support": {
+        "source": "https://github.com/symfony/polyfill-ctype/tree/v1.28.0"
+      },
+      "funding": [
+        {
+          "url": "https://symfony.com/sponsor",
+          "type": "custom"
+        },
+        {
+          "url": "https://github.com/fabpot",
+          "type": "github"
+        },
+        {
+          "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+          "type": "tidelift"
+        }
+      ],
+      "time": "2023-01-26T09:26:14+00:00"
+    },
+    {
+      "name": "symfony/polyfill-intl-grapheme",
+      "version": "v1.28.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/symfony/polyfill-intl-grapheme.git",
+        "reference": "875e90aeea2777b6f135677f618529449334a612"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/875e90aeea2777b6f135677f618529449334a612",
+        "reference": "875e90aeea2777b6f135677f618529449334a612",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.1"
+      },
+      "suggest": {
+        "ext-intl": "For best performance"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-main": "1.28-dev"
+        },
+        "thanks": {
+          "name": "symfony/polyfill",
+          "url": "https://github.com/symfony/polyfill"
+        }
+      },
+      "autoload": {
+        "files": [
+          "bootstrap.php"
+        ],
+        "psr-4": {
+          "Symfony\\Polyfill\\Intl\\Grapheme\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Nicolas Grekas",
+          "email": "p@tchwork.com"
+        },
+        {
+          "name": "Symfony Community",
+          "homepage": "https://symfony.com/contributors"
+        }
+      ],
+      "description": "Symfony polyfill for intl's grapheme_* functions",
+      "homepage": "https://symfony.com",
+      "keywords": [
+        "compatibility",
+        "grapheme",
+        "intl",
+        "polyfill",
+        "portable",
+        "shim"
+      ],
+      "support": {
+        "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.28.0"
+      },
+      "funding": [
+        {
+          "url": "https://symfony.com/sponsor",
+          "type": "custom"
+        },
+        {
+          "url": "https://github.com/fabpot",
+          "type": "github"
+        },
+        {
+          "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+          "type": "tidelift"
+        }
+      ],
+      "time": "2023-01-26T09:26:14+00:00"
+    },
+    {
+      "name": "symfony/polyfill-intl-normalizer",
+      "version": "v1.28.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/symfony/polyfill-intl-normalizer.git",
+        "reference": "8c4ad05dd0120b6a53c1ca374dca2ad0a1c4ed92"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/8c4ad05dd0120b6a53c1ca374dca2ad0a1c4ed92",
+        "reference": "8c4ad05dd0120b6a53c1ca374dca2ad0a1c4ed92",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.1"
+      },
+      "suggest": {
+        "ext-intl": "For best performance"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-main": "1.28-dev"
+        },
+        "thanks": {
+          "name": "symfony/polyfill",
+          "url": "https://github.com/symfony/polyfill"
+        }
+      },
+      "autoload": {
+        "files": [
+          "bootstrap.php"
+        ],
+        "psr-4": {
+          "Symfony\\Polyfill\\Intl\\Normalizer\\": ""
+        },
+        "classmap": [
+          "Resources/stubs"
+        ]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Nicolas Grekas",
+          "email": "p@tchwork.com"
+        },
+        {
+          "name": "Symfony Community",
+          "homepage": "https://symfony.com/contributors"
+        }
+      ],
+      "description": "Symfony polyfill for intl's Normalizer class and related functions",
+      "homepage": "https://symfony.com",
+      "keywords": [
+        "compatibility",
+        "intl",
+        "normalizer",
+        "polyfill",
+        "portable",
+        "shim"
+      ],
+      "support": {
+        "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.28.0"
+      },
+      "funding": [
+        {
+          "url": "https://symfony.com/sponsor",
+          "type": "custom"
+        },
+        {
+          "url": "https://github.com/fabpot",
+          "type": "github"
+        },
+        {
+          "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+          "type": "tidelift"
+        }
+      ],
+      "time": "2023-01-26T09:26:14+00:00"
+    },
+    {
+      "name": "symfony/polyfill-mbstring",
+      "version": "v1.28.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/symfony/polyfill-mbstring.git",
+        "reference": "42292d99c55abe617799667f454222c54c60e229"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/42292d99c55abe617799667f454222c54c60e229",
+        "reference": "42292d99c55abe617799667f454222c54c60e229",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.1"
+      },
+      "provide": {
+        "ext-mbstring": "*"
+      },
+      "suggest": {
+        "ext-mbstring": "For best performance"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-main": "1.28-dev"
+        },
+        "thanks": {
+          "name": "symfony/polyfill",
+          "url": "https://github.com/symfony/polyfill"
+        }
+      },
+      "autoload": {
+        "files": [
+          "bootstrap.php"
+        ],
+        "psr-4": {
+          "Symfony\\Polyfill\\Mbstring\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Nicolas Grekas",
+          "email": "p@tchwork.com"
+        },
+        {
+          "name": "Symfony Community",
+          "homepage": "https://symfony.com/contributors"
+        }
+      ],
+      "description": "Symfony polyfill for the Mbstring extension",
+      "homepage": "https://symfony.com",
+      "keywords": [
+        "compatibility",
+        "mbstring",
+        "polyfill",
+        "portable",
+        "shim"
+      ],
+      "support": {
+        "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.28.0"
+      },
+      "funding": [
+        {
+          "url": "https://symfony.com/sponsor",
+          "type": "custom"
+        },
+        {
+          "url": "https://github.com/fabpot",
+          "type": "github"
+        },
+        {
+          "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+          "type": "tidelift"
+        }
+      ],
+      "time": "2023-07-28T09:04:16+00:00"
+    },
+    {
+      "name": "symfony/service-contracts",
+      "version": "v3.4.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/symfony/service-contracts.git",
+        "reference": "b3313c2dbffaf71c8de2934e2ea56ed2291a3838"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/symfony/service-contracts/zipball/b3313c2dbffaf71c8de2934e2ea56ed2291a3838",
+        "reference": "b3313c2dbffaf71c8de2934e2ea56ed2291a3838",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=8.1",
+        "psr/container": "^2.0"
+      },
+      "conflict": {
+        "ext-psr": "<1.1|>=2"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-main": "3.4-dev"
+        },
+        "thanks": {
+          "name": "symfony/contracts",
+          "url": "https://github.com/symfony/contracts"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Symfony\\Contracts\\Service\\": ""
+        },
+        "exclude-from-classmap": [
+          "/Test/"
+        ]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Nicolas Grekas",
+          "email": "p@tchwork.com"
+        },
+        {
+          "name": "Symfony Community",
+          "homepage": "https://symfony.com/contributors"
+        }
+      ],
+      "description": "Generic abstractions related to writing services",
+      "homepage": "https://symfony.com",
+      "keywords": [
+        "abstractions",
+        "contracts",
+        "decoupling",
+        "interfaces",
+        "interoperability",
+        "standards"
+      ],
+      "support": {
+        "source": "https://github.com/symfony/service-contracts/tree/v3.4.0"
+      },
+      "funding": [
+        {
+          "url": "https://symfony.com/sponsor",
+          "type": "custom"
+        },
+        {
+          "url": "https://github.com/fabpot",
+          "type": "github"
+        },
+        {
+          "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+          "type": "tidelift"
+        }
+      ],
+      "time": "2023-07-30T20:28:31+00:00"
+    },
+    {
+      "name": "symfony/string",
+      "version": "v7.0.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/symfony/string.git",
+        "reference": "92bd2bfbba476d4a1838e5e12168bef2fd1e6620"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/symfony/string/zipball/92bd2bfbba476d4a1838e5e12168bef2fd1e6620",
+        "reference": "92bd2bfbba476d4a1838e5e12168bef2fd1e6620",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=8.2",
+        "symfony/polyfill-ctype": "~1.8",
+        "symfony/polyfill-intl-grapheme": "~1.0",
+        "symfony/polyfill-intl-normalizer": "~1.0",
+        "symfony/polyfill-mbstring": "~1.0"
+      },
+      "conflict": {
+        "symfony/translation-contracts": "<2.5"
+      },
+      "require-dev": {
+        "symfony/error-handler": "^6.4|^7.0",
+        "symfony/http-client": "^6.4|^7.0",
+        "symfony/intl": "^6.4|^7.0",
+        "symfony/translation-contracts": "^2.5|^3.0",
+        "symfony/var-exporter": "^6.4|^7.0"
+      },
+      "type": "library",
+      "autoload": {
+        "files": [
+          "Resources/functions.php"
+        ],
+        "psr-4": {
+          "Symfony\\Component\\String\\": ""
+        },
+        "exclude-from-classmap": [
+          "/Tests/"
+        ]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Nicolas Grekas",
+          "email": "p@tchwork.com"
+        },
+        {
+          "name": "Symfony Community",
+          "homepage": "https://symfony.com/contributors"
+        }
+      ],
+      "description": "Provides an object-oriented API to strings and deals with bytes, UTF-8 code points and grapheme clusters in a unified way",
+      "homepage": "https://symfony.com",
+      "keywords": [
+        "grapheme",
+        "i18n",
+        "string",
+        "unicode",
+        "utf-8",
+        "utf8"
+      ],
+      "support": {
+        "source": "https://github.com/symfony/string/tree/v7.0.0"
+      },
+      "funding": [
+        {
+          "url": "https://symfony.com/sponsor",
+          "type": "custom"
+        },
+        {
+          "url": "https://github.com/fabpot",
+          "type": "github"
+        },
+        {
+          "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+          "type": "tidelift"
+        }
+      ],
+      "time": "2023-11-29T08:40:23+00:00"
+    }
+  ],
+  "packages-dev": [
+    {
+      "name": "ergebnis/composer-normalize",
+      "version": "2.39.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/ergebnis/composer-normalize.git",
+        "reference": "a878360bc8cb5cb440b9381f72b0aaa125f937c7"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/a878360bc8cb5cb440b9381f72b0aaa125f937c7",
+        "reference": "a878360bc8cb5cb440b9381f72b0aaa125f937c7",
+        "shasum": ""
+      },
+      "require": {
+        "composer-plugin-api": "^2.0.0",
+        "ergebnis/json": "^1.1.0",
+        "ergebnis/json-normalizer": "^4.3.0",
+        "ergebnis/json-printer": "^3.4.0",
+        "ext-json": "*",
+        "justinrainbow/json-schema": "^5.2.12",
+        "localheinz/diff": "^1.1.1",
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0"
+      },
+      "require-dev": {
+        "composer/composer": "^2.6.5",
+        "ergebnis/license": "^2.2.0",
+        "ergebnis/php-cs-fixer-config": "~6.7.0",
+        "ergebnis/phpunit-slow-test-detector": "^2.3.0",
+        "fakerphp/faker": "^1.23.0",
+        "infection/infection": "~0.27.4",
+        "phpunit/phpunit": "^10.4.1",
+        "psalm/plugin-phpunit": "~0.18.4",
+        "rector/rector": "~0.18.5",
+        "symfony/filesystem": "^6.0.13",
+        "vimeo/psalm": "^5.15.0"
+      },
+      "type": "composer-plugin",
+      "extra": {
+        "class": "Ergebnis\\Composer\\Normalize\\NormalizePlugin",
+        "composer-normalize": {
+          "indent-size": 2,
+          "indent-style": "space"
+        },
+        "plugin-optional": true
+      },
+      "autoload": {
+        "psr-4": {
+          "Ergebnis\\Composer\\Normalize\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Andreas Möller",
+          "email": "am@localheinz.com",
+          "homepage": "https://localheinz.com"
+        }
+      ],
+      "description": "Provides a composer plugin for normalizing composer.json.",
+      "homepage": "https://github.com/ergebnis/composer-normalize",
+      "keywords": [
+        "composer",
+        "normalize",
+        "normalizer",
+        "plugin"
+      ],
+      "support": {
+        "issues": "https://github.com/ergebnis/composer-normalize/issues",
+        "security": "https://github.com/ergebnis/composer-normalize/blob/main/.github/SECURITY.md",
+        "source": "https://github.com/ergebnis/composer-normalize"
+      },
+      "time": "2023-10-10T15:43:27+00:00"
+    },
+    {
+      "name": "ergebnis/json",
+      "version": "1.1.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/ergebnis/json.git",
+        "reference": "9f2b9086c43b189d7044a5b6215a931fb6e9125d"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/ergebnis/json/zipball/9f2b9086c43b189d7044a5b6215a931fb6e9125d",
+        "reference": "9f2b9086c43b189d7044a5b6215a931fb6e9125d",
+        "shasum": ""
+      },
+      "require": {
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0"
+      },
+      "require-dev": {
+        "ergebnis/composer-normalize": "^2.29.0",
+        "ergebnis/data-provider": "^3.0.0",
+        "ergebnis/license": "^2.2.0",
+        "ergebnis/php-cs-fixer-config": "^6.6.0",
+        "ergebnis/phpunit-slow-test-detector": "^2.3.0",
+        "fakerphp/faker": "^1.23.0",
+        "infection/infection": "~0.27.4",
+        "phpunit/phpunit": "^10.4.1",
+        "psalm/plugin-phpunit": "~0.18.4",
+        "rector/rector": "~0.18.5",
+        "vimeo/psalm": "^5.15.0"
+      },
+      "type": "library",
+      "extra": {
+        "composer-normalize": {
+          "indent-size": 2,
+          "indent-style": "space"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Ergebnis\\Json\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Andreas Möller",
+          "email": "am@localheinz.com",
+          "homepage": "https://localheinz.com"
+        }
+      ],
+      "description": "Provides a Json value object for representing a valid JSON string.",
+      "homepage": "https://github.com/ergebnis/json",
+      "keywords": [
+        "json"
+      ],
+      "support": {
+        "issues": "https://github.com/ergebnis/json/issues",
+        "security": "https://github.com/ergebnis/json/blob/main/.github/SECURITY.md",
+        "source": "https://github.com/ergebnis/json"
+      },
+      "time": "2023-10-10T07:57:48+00:00"
+    },
+    {
+      "name": "ergebnis/json-normalizer",
+      "version": "4.3.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/ergebnis/json-normalizer.git",
+        "reference": "716fa0a5dcc75fbcb2c1c2e0542b2f56732460bd"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/ergebnis/json-normalizer/zipball/716fa0a5dcc75fbcb2c1c2e0542b2f56732460bd",
+        "reference": "716fa0a5dcc75fbcb2c1c2e0542b2f56732460bd",
+        "shasum": ""
+      },
+      "require": {
+        "ergebnis/json": "^1.1.0",
+        "ergebnis/json-pointer": "^3.2.0",
+        "ergebnis/json-printer": "^3.4.0",
+        "ergebnis/json-schema-validator": "^4.1.0",
+        "ext-json": "*",
+        "justinrainbow/json-schema": "^5.2.12",
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0"
+      },
+      "require-dev": {
+        "composer/semver": "^3.4.0",
+        "ergebnis/data-provider": "^3.0.0",
+        "ergebnis/license": "^2.2.0",
+        "ergebnis/php-cs-fixer-config": "~6.7.0",
+        "ergebnis/phpunit-slow-test-detector": "^2.3.0",
+        "fakerphp/faker": "^1.23.0",
+        "infection/infection": "~0.27.4",
+        "phpunit/phpunit": "^10.4.1",
+        "psalm/plugin-phpunit": "~0.18.4",
+        "rector/rector": "~0.18.5",
+        "symfony/filesystem": "^6.3.1",
+        "symfony/finder": "^6.3.5",
+        "vimeo/psalm": "^5.15.0"
+      },
+      "suggest": {
+        "composer/semver": "If you want to use ComposerJsonNormalizer or VersionConstraintNormalizer"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "Ergebnis\\Json\\Normalizer\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Andreas Möller",
+          "email": "am@localheinz.com",
+          "homepage": "https://localheinz.com"
+        }
+      ],
+      "description": "Provides generic and vendor-specific normalizers for normalizing JSON documents.",
+      "homepage": "https://github.com/ergebnis/json-normalizer",
+      "keywords": [
+        "json",
+        "normalizer"
+      ],
+      "support": {
+        "issues": "https://github.com/ergebnis/json-normalizer/issues",
+        "security": "https://github.com/ergebnis/json-normalizer/blob/main/.github/SECURITY.md",
+        "source": "https://github.com/ergebnis/json-normalizer"
+      },
+      "time": "2023-10-10T15:15:03+00:00"
+    },
+    {
+      "name": "ergebnis/json-pointer",
+      "version": "3.3.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/ergebnis/json-pointer.git",
+        "reference": "8e517faefc06b7c761eaa041febef51a9375819a"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/ergebnis/json-pointer/zipball/8e517faefc06b7c761eaa041febef51a9375819a",
+        "reference": "8e517faefc06b7c761eaa041febef51a9375819a",
+        "shasum": ""
+      },
+      "require": {
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0"
+      },
+      "require-dev": {
+        "ergebnis/composer-normalize": "^2.29.0",
+        "ergebnis/data-provider": "^3.0.0",
+        "ergebnis/license": "^2.2.0",
+        "ergebnis/php-cs-fixer-config": "~6.7.0",
+        "ergebnis/phpunit-slow-test-detector": "^2.3.0",
+        "fakerphp/faker": "^1.23.0",
+        "infection/infection": "~0.27.4",
+        "phpunit/phpunit": "^10.4.1",
+        "psalm/plugin-phpunit": "~0.18.4",
+        "rector/rector": "~0.18.5",
+        "vimeo/psalm": "^5.15.0"
+      },
+      "type": "library",
+      "extra": {
+        "composer-normalize": {
+          "indent-size": 2,
+          "indent-style": "space"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Ergebnis\\Json\\Pointer\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Andreas Möller",
+          "email": "am@localheinz.com",
+          "homepage": "https://localheinz.com"
+        }
+      ],
+      "description": "Provides JSON pointer as a value object.",
+      "homepage": "https://github.com/ergebnis/json-pointer",
+      "keywords": [
+        "RFC6901",
+        "json",
+        "pointer"
+      ],
+      "support": {
+        "issues": "https://github.com/ergebnis/json-pointer/issues",
+        "security": "https://github.com/ergebnis/json-pointer/blob/main/.github/SECURITY.md",
+        "source": "https://github.com/ergebnis/json-pointer"
+      },
+      "time": "2023-10-10T14:41:06+00:00"
+    },
+    {
+      "name": "ergebnis/json-printer",
+      "version": "3.4.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/ergebnis/json-printer.git",
+        "reference": "05841593d72499de4f7ce4034a237c77e470558f"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/ergebnis/json-printer/zipball/05841593d72499de4f7ce4034a237c77e470558f",
+        "reference": "05841593d72499de4f7ce4034a237c77e470558f",
+        "shasum": ""
+      },
+      "require": {
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0"
+      },
+      "require-dev": {
+        "ergebnis/license": "^2.2.0",
+        "ergebnis/php-cs-fixer-config": "^6.6.0",
+        "ergebnis/phpunit-slow-test-detector": "^2.3.0",
+        "fakerphp/faker": "^1.23.0",
+        "infection/infection": "~0.27.3",
+        "phpunit/phpunit": "^10.4.1",
+        "psalm/plugin-phpunit": "~0.18.4",
+        "rector/rector": "~0.18.5",
+        "vimeo/psalm": "^5.15.0"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "Ergebnis\\Json\\Printer\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Andreas Möller",
+          "email": "am@localheinz.com",
+          "homepage": "https://localheinz.com"
+        }
+      ],
+      "description": "Provides a JSON printer, allowing for flexible indentation.",
+      "homepage": "https://github.com/ergebnis/json-printer",
+      "keywords": [
+        "formatter",
+        "json",
+        "printer"
+      ],
+      "support": {
+        "issues": "https://github.com/ergebnis/json-printer/issues",
+        "security": "https://github.com/ergebnis/json-printer/blob/main/.github/SECURITY.md",
+        "source": "https://github.com/ergebnis/json-printer"
+      },
+      "time": "2023-10-10T07:42:48+00:00"
+    },
+    {
+      "name": "ergebnis/json-schema-validator",
+      "version": "4.1.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/ergebnis/json-schema-validator.git",
+        "reference": "d568ed85d1cdc2e49d650c2fc234dc2516f3f25b"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/ergebnis/json-schema-validator/zipball/d568ed85d1cdc2e49d650c2fc234dc2516f3f25b",
+        "reference": "d568ed85d1cdc2e49d650c2fc234dc2516f3f25b",
+        "shasum": ""
+      },
+      "require": {
+        "ergebnis/json": "^1.0.1",
+        "ergebnis/json-pointer": "^3.2.0",
+        "ext-json": "*",
+        "justinrainbow/json-schema": "^5.2.12",
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0"
+      },
+      "require-dev": {
+        "ergebnis/composer-normalize": "^2.21.0",
+        "ergebnis/data-provider": "^3.0.0",
+        "ergebnis/license": "^2.2.0",
+        "ergebnis/php-cs-fixer-config": "~6.6.0",
+        "ergebnis/phpunit-slow-test-detector": "^2.3.0",
+        "fakerphp/faker": "^1.23.0",
+        "infection/infection": "~0.27.4",
+        "phpunit/phpunit": "^10.4.1",
+        "psalm/plugin-phpunit": "~0.18.4",
+        "rector/rector": "~0.18.5",
+        "vimeo/psalm": "^5.15.0"
+      },
+      "type": "library",
+      "extra": {
+        "composer-normalize": {
+          "indent-size": 2,
+          "indent-style": "space"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Ergebnis\\Json\\SchemaValidator\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Andreas Möller",
+          "email": "am@localheinz.com",
+          "homepage": "https://localheinz.com"
+        }
+      ],
+      "description": "Provides a JSON schema validator, building on top of justinrainbow/json-schema.",
+      "homepage": "https://github.com/ergebnis/json-schema-validator",
+      "keywords": [
+        "json",
+        "schema",
+        "validator"
+      ],
+      "support": {
+        "issues": "https://github.com/ergebnis/json-schema-validator/issues",
+        "security": "https://github.com/ergebnis/json-schema-validator/blob/main/.github/SECURITY.md",
+        "source": "https://github.com/ergebnis/json-schema-validator"
+      },
+      "time": "2023-10-10T14:16:57+00:00"
+    },
+    {
+      "name": "justinrainbow/json-schema",
+      "version": "v5.2.13",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/justinrainbow/json-schema.git",
+        "reference": "fbbe7e5d79f618997bc3332a6f49246036c45793"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/fbbe7e5d79f618997bc3332a6f49246036c45793",
+        "reference": "fbbe7e5d79f618997bc3332a6f49246036c45793",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=5.3.3"
+      },
+      "require-dev": {
+        "friendsofphp/php-cs-fixer": "~2.2.20||~2.15.1",
+        "json-schema/json-schema-test-suite": "1.2.0",
+        "phpunit/phpunit": "^4.8.35"
+      },
+      "bin": [
+        "bin/validate-json"
+      ],
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "5.0.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "JsonSchema\\": "src/JsonSchema/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Bruno Prieto Reis",
+          "email": "bruno.p.reis@gmail.com"
+        },
+        {
+          "name": "Justin Rainbow",
+          "email": "justin.rainbow@gmail.com"
+        },
+        {
+          "name": "Igor Wiedler",
+          "email": "igor@wiedler.ch"
+        },
+        {
+          "name": "Robert Schönthal",
+          "email": "seroscho@googlemail.com"
+        }
+      ],
+      "description": "A library to validate a json schema.",
+      "homepage": "https://github.com/justinrainbow/json-schema",
+      "keywords": [
+        "json",
+        "schema"
+      ],
+      "support": {
+        "issues": "https://github.com/justinrainbow/json-schema/issues",
+        "source": "https://github.com/justinrainbow/json-schema/tree/v5.2.13"
+      },
+      "time": "2023-09-26T02:20:38+00:00"
+    },
+    {
+      "name": "localheinz/diff",
+      "version": "1.1.1",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/localheinz/diff.git",
+        "reference": "851bb20ea8358c86f677f5f111c4ab031b1c764c"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/localheinz/diff/zipball/851bb20ea8358c86f677f5f111c4ab031b1c764c",
+        "reference": "851bb20ea8358c86f677f5f111c4ab031b1c764c",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^7.1 || ^8.0"
+      },
+      "require-dev": {
+        "phpunit/phpunit": "^7.5 || ^8.0",
+        "symfony/process": "^4.2 || ^5"
+      },
+      "type": "library",
+      "autoload": {
+        "classmap": [
+          "src/"
+        ]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "BSD-3-Clause"
+      ],
+      "authors": [
+        {
+          "name": "Sebastian Bergmann",
+          "email": "sebastian@phpunit.de"
+        },
+        {
+          "name": "Kore Nordmann",
+          "email": "mail@kore-nordmann.de"
+        }
+      ],
+      "description": "Fork of sebastian/diff for use with ergebnis/composer-normalize",
+      "homepage": "https://github.com/localheinz/diff",
+      "keywords": [
+        "diff",
+        "udiff",
+        "unidiff",
+        "unified diff"
+      ],
+      "support": {
+        "source": "https://github.com/localheinz/diff/tree/main"
+      },
+      "funding": [
+        {
+          "url": "https://github.com/sebastianbergmann",
+          "type": "github"
+        }
+      ],
+      "time": "2020-07-06T04:49:32+00:00"
+    }
+  ],
+  "aliases": [],
+  "minimum-stability": "stable",
+  "stability-flags": [],
+  "prefer-stable": false,
+  "prefer-lowest": false,
+  "platform": [],
+  "platform-dev": [],
+  "plugin-api-version": "2.6.0"
+}
