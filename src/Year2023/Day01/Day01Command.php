@@ -17,7 +17,7 @@ use Symfony\Component\Filesystem\Filesystem;
 )]
 class Day01Command extends Command
 {
-    public final const CASES = [
+    private const CASES = [
         'one' => 1,
         'two' => 2,
         'three' => 3,
@@ -90,7 +90,7 @@ class Day01Command extends Command
         $positions = [];
         $cases = [];
 
-        foreach (static::CASES as $key => $case) {
+        foreach (self::CASES as $key => $case) {
             if ($onlyDigits && !is_int($key)) {
                 continue;
             }
@@ -124,7 +124,7 @@ class Day01Command extends Command
             $volatilePos = 0;
             foreach ($positions as $pos) {
                 if ($volatilePos <= $pos) {
-                    $numbers[$pos] = static::CASES[$case];
+                    $numbers[$pos] = self::CASES[$case];
                     $volatilePos = $pos;
                 }
             }
