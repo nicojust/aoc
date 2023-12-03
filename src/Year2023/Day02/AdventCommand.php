@@ -15,7 +15,7 @@ use Symfony\Component\Filesystem\Filesystem;
     description: 'Run code.',
     aliases: ['aoc:day2']
 )]
-class Day02Command extends Command
+class AdventCommand extends Command
 {
     private const CUBES = [
         'red' => 12,

@@ -15,7 +15,7 @@ use Symfony\Component\Filesystem\Filesystem;
     description: 'Run code.',
     aliases: ['aoc:day1']
 )]
-class Day01Command extends Command
+class AdventCommand extends Command
 {
     private const CASES = [
         'one' => 1,
