@@ -55,7 +55,7 @@ class Day02Command extends Command
                 $this->processBag($line);
                 $this->checkSets();
             }
-            $output->writeln(sprintf('<info>%s</info>', print_r($this->games, true)));
+            $output->writeln(sprintf('<comment>%s</comment>', print_r($this->games, true)));
 
             $sumOfIds = array_sum(array_keys($this->games['hits']));
             $output->writeln(sprintf('<info>Solution 1: %s</info>', $sumOfIds));
