@@ -2,17 +2,16 @@
 
 namespace Nicojust\Aoc\Year2023\Day02;
 
-use Generator;
+use Nicojust\Aoc\Util;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Filesystem\Filesystem;
 
 #[AsCommand(
     name: 'aoc:day:02',
-    description: 'Run code.',
+    description: 'Day 2: Cube Conundrum',
     aliases: ['aoc:day2']
 )]
 class AdventCommand extends Command
@@ -32,44 +31,34 @@ class AdventCommand extends Command
     protected function configure(): void
     {
         $this
-            ->addArgument('env', InputArgument::OPTIONAL, 'test or prod');
+            ->addArgument(Util::ENV, InputArgument::OPTIONAL, 'test or prod');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $env = $input->getArgument('env');
-
-        $filepath = __DIR__ . '/input/prod.txt';
-        if ($env) {
-            $filepath = sprintf('%s/input/%s.txt', __DIR__, $env);
+        if (!Util::fileExists($input, $output, __DIR__)) {
+            return Command::FAILURE;
         }
 
-        $filesystem = new Filesystem();
-        if ($filesystem->exists($filepath)) {
-            $sumOfIds = 0;
-            $sumOfPowerSets = 0;
+        $sumOfIds = 0;
+        $sumOfPowerSets = 0;
+        foreach (Util::readLine(Util::getFilePath($input, __DIR__)) as $line) {
+            $output->write(sprintf('<comment>%s</comment>', $line));
 
-            foreach ($this->readLinesFromFile($filepath) as $line) {
-                $output->writeln(sprintf('<comment>%s</comment>', $line));
-
-                $this->processBag($line);
-                $this->checkSets();
-            }
-            $output->writeln(sprintf('<comment>%s</comment>', print_r($this->games, true)));
-
-            $sumOfIds = array_sum(array_keys($this->games['hits']));
-            $output->writeln(sprintf('<info>Solution 1: %s</info>', $sumOfIds));
-
-            array_walk($this->games['bags'], function ($bag) use (&$sumOfPowerSets) {
-                return $sumOfPowerSets += $bag['highest'][array_keys(self::CUBES)[0]] * $bag['highest'][array_keys(self::CUBES)[1]] * $bag['highest'][array_keys(self::CUBES)[2]];
-            });
-            $output->writeln(sprintf('<info>Solution 2: %s</info>', $sumOfPowerSets));
-
-            return Command::SUCCESS;
+            $this->processBag($line);
+            $this->checkSets();
         }
-        $output->writeln(sprintf('<error>File not found at "%s"</error>', $filepath));
+        $output->writeln('');
 
-        return Command::FAILURE;
+        $sumOfIds = array_sum(array_keys($this->games['hits']));
+        array_walk($this->games['bags'], function ($bag) use (&$sumOfPowerSets) {
+            return $sumOfPowerSets += $bag['highest'][array_keys(self::CUBES)[0]] * $bag['highest'][array_keys(self::CUBES)[1]] * $bag['highest'][array_keys(self::CUBES)[2]];
+        });
+
+        $output->writeln(sprintf('<info>Solution 1: %d</info>', $sumOfIds));
+        $output->writeln(sprintf('<info>Solution 2: %d</info>', $sumOfPowerSets));
+
+        return Command::SUCCESS;
     }
 
     private function processBag(string $line): void
@@ -116,15 +105,5 @@ class AdventCommand extends Command
                 $this->games['hits'][$bag['id']] = $bag;
             }
         }
-    }
-
-    private function readLinesFromFile(string $filepath): Generator
-    {
-        $fileObject = new \SplFileObject($filepath, 'r');
-        while (!$fileObject->eof()) {
-            yield $fileObject->fgets();
-        }
-
-        $fileObject = null; // Release the file handle
     }
 }

@@ -2,17 +2,17 @@
 
 namespace Nicojust\Aoc\Year2023\Day01;
 
+use Nicojust\Aoc\Util;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Filesystem\Filesystem;
 
 #[AsCommand(
     name: 'aoc:day:01',
-    description: 'Run code.',
+    description: 'Day 1: Trebuchet?!',
     aliases: ['aoc:day1']
 )]
 class AdventCommand extends Command
@@ -41,7 +41,7 @@ class AdventCommand extends Command
     protected function configure(): void
     {
         $this
-            ->addArgument('env', InputArgument::OPTIONAL, 'test or prod')
+            ->addArgument(Util::ENV, InputArgument::OPTIONAL, 'test or prod')
             ->addOption(
                 'digits',
                 'd',
@@ -52,37 +52,29 @@ class AdventCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $env = $input->getArgument('env');
+        if (!Util::fileExists($input, $output, __DIR__)) {
+            return Command::FAILURE;
+        }
         $onlyDigits = $input->getOption('digits');
 
-        $filepath = __DIR__ . '/input/prod.txt';
-        if ($env) {
-            $filepath = sprintf('%s/input/%s.txt', __DIR__, $env);
+        $complete = 0;
+        foreach (Util::readLine(Util::getFilePath($input, __DIR__)) as $line) {
+            $output->write(sprintf('<comment>%s</comment>', $line));
+
+            $numbers = $this->getValueFromCase($line, $onlyDigits);
+            reset($numbers);
+            $number = current($numbers) . end($numbers);
+
+            $output->write(sprintf('<comment>%s</comment>', print_r($numbers, true)));
+            $output->write(sprintf('<comment>%s</comment>', $number));
+
+            $complete += (int)$number;
         }
+        $output->writeln('');
 
-        $filesystem = new Filesystem();
-        if ($filesystem->exists($filepath)) {
-            $fileObject = new \SplFileObject($filepath, 'r');
+        $output->writeln(sprintf('<info>Solution: %s</info>', $complete));
 
-            $complete = 0;
-            while (!$fileObject->eof()) {
-                $line = $fileObject->fgets();
-
-                $numbers = $this->getValueFromCase($line, $onlyDigits);
-                reset($numbers);
-                $number = current($numbers) . end($numbers);
-
-                $output->writeln(sprintf('<comment>%s</comment>%s%s<comment>%s</comment>', $line, PHP_EOL, print_r($numbers, true), $number));
-
-                $complete += (int)$number;
-            }
-            $output->writeln(sprintf('<info>Solution: %s</info>', $complete));
-
-            return Command::SUCCESS;
-        }
-        $output->writeln(sprintf('<error>File not found at "%s"</error>', $filepath));
-
-        return Command::FAILURE;
+        return Command::SUCCESS;
     }
 
     private function getValueFromCase(string $string, bool $onlyDigits = true): array

@@ -2,17 +2,16 @@
 
 namespace Nicojust\Aoc\Year2023\Day03;
 
-use Generator;
+use Nicojust\Aoc\Util;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Filesystem\Filesystem;
 
 #[AsCommand(
     name: 'aoc:day:03',
-    description: 'Run code.',
+    description: 'Day 3: Gear Ratios',
     aliases: ['aoc:day3']
 )]
 class AdventCommand extends Command
@@ -35,44 +34,35 @@ class AdventCommand extends Command
     protected function configure(): void
     {
         $this
-            ->addArgument('env', InputArgument::OPTIONAL, 'test or prod');
+            ->addArgument(Util::ENV, InputArgument::OPTIONAL, 'test or prod');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $env = $input->getArgument('env');
-
-        $filepath = __DIR__ . '/input/prod.txt';
-        if ($env) {
-            $filepath = sprintf('%s/input/%s.txt', __DIR__, $env);
+        if (!Util::fileExists($input, $output, __DIR__)) {
+            return Command::FAILURE;
         }
 
-        $filesystem = new Filesystem();
-        if ($filesystem->exists($filepath)) {
-            $sumOfNumbersWithAdjacentSymbols = 0;
-            $sumOfRatiosWithAdjacentStars = 0;
+        $sumOfNumbersWithAdjacentSymbols = 0;
+        $sumOfRatiosWithAdjacentStars = 0;
+        foreach (Util::readLine(Util::getFilePath($input, __DIR__)) as $line) {
+            $output->write(sprintf('<comment>%s</comment>', $line));
 
-            foreach ($this->readLinesFromFile($filepath) as $line) {
-                $output->writeln(sprintf('<comment>%s</comment>', $line));
-
-                $this->addSchematic($line);
-            }
-            [$hits, $ratios] = $this->checkSchematics();
-
-            $sumOfNumbersWithAdjacentSymbols = array_sum($hits);
-            $sumOfRatiosWithAdjacentStars = array_sum($ratios);
-
-            $output->writeln(sprintf('<comment>%s</comment>', print_r($hits, true)));
-            $output->writeln(sprintf('<comment>%s</comment>', print_r($ratios, true)));
-
-            $output->writeln(sprintf('<info>Solution 1: %s</info>', $sumOfNumbersWithAdjacentSymbols));
-            $output->writeln(sprintf('<info>Solution 2: %s</info>', $sumOfRatiosWithAdjacentStars));
-
-            return Command::SUCCESS;
+            $this->addSchematic($line);
         }
-        $output->writeln(sprintf('<error>File not found at "%s"</error>', $filepath));
+        $output->writeln('');
 
-        return Command::FAILURE;
+        [$hits, $ratios] = $this->checkSchematics();
+        $sumOfNumbersWithAdjacentSymbols = array_sum($hits);
+        $sumOfRatiosWithAdjacentStars = array_sum($ratios);
+
+        $output->writeln(sprintf('<comment>%s</comment>', print_r($hits, true)));
+        $output->writeln(sprintf('<comment>%s</comment>', print_r($ratios, true)));
+
+        $output->writeln(sprintf('<info>Solution 1: %d</info>', $sumOfNumbersWithAdjacentSymbols));
+        $output->writeln(sprintf('<info>Solution 2: %d</info>', $sumOfRatiosWithAdjacentStars));
+
+        return Command::SUCCESS;
     }
 
     private function addSchematic(string $line): void
@@ -135,15 +125,5 @@ class AdventCommand extends Command
         }
 
         return [$hits, $ratios];
-    }
-
-    private function readLinesFromFile(string $filepath): Generator
-    {
-        $fileObject = new \SplFileObject($filepath, 'r');
-        while (!$fileObject->eof()) {
-            yield $fileObject->fgets();
-        }
-
-        $fileObject = null; // Release the file handle
     }
 }
