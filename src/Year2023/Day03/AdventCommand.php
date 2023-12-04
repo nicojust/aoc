@@ -19,6 +19,17 @@ class AdventCommand extends Command
 {
     private array $schematics = [];
 
+    private array $directions = [
+        [-1, -1],
+        [-1, 0],
+        [-1, +1],
+        [0, -1],
+        [0, +1],
+        [+1, -1],
+        [+1, 0],
+        [+1, +1],
+    ];
+
     private int $id = 0;
 
     protected function configure(): void
@@ -46,13 +57,13 @@ class AdventCommand extends Command
 
                 $this->addSchematic($line);
             }
-            $hits = $this->checkSchematicPart1();
-            $output->writeln(sprintf('<comment>%s</comment>', print_r($hits, true)));
-            $sumOfNumbersWithAdjacentSymbols = array_sum($hits);
+            [$hits, $ratios] = $this->checkSchematics();
 
-            $ratios = $this->checkSchematicPart2();
-            $output->writeln(sprintf('<comment>%s</comment>', print_r($ratios, true)));
+            $sumOfNumbersWithAdjacentSymbols = array_sum($hits);
             $sumOfRatiosWithAdjacentStars = array_sum($ratios);
+
+            $output->writeln(sprintf('<comment>%s</comment>', print_r($hits, true)));
+            $output->writeln(sprintf('<comment>%s</comment>', print_r($ratios, true)));
 
             $output->writeln(sprintf('<info>Solution 1: %s</info>', $sumOfNumbersWithAdjacentSymbols));
             $output->writeln(sprintf('<info>Solution 2: %s</info>', $sumOfRatiosWithAdjacentStars));
@@ -85,187 +96,25 @@ class AdventCommand extends Command
         ];
     }
 
-    private function checkSchematicPart1(): array
+    private function checkSchematics(): array
     {
         $hits = [];
-
-        foreach ($this->schematics as $key => $schema) {
-            foreach ($schema['schema'] as $pos => $char) {
-                if (!ctype_digit($char) && $char !== '.') {
-                    $hasBefore = isset($this->schematics[$key - 1]);
-                    $hasAfter = isset($this->schematics[$key + 1]);
-
-                    if ($hasBefore) {
-                        if (isset($this->schematics[$key - 1]['schema'][$pos - 1]) && ctype_digit($this->schematics[$key - 1]['schema'][$pos - 1])) {
-                            foreach ($this->schematics[$key - 1]['values'] as $value) {
-                                if (in_array($pos - 1, $value[1])) {
-                                    $hits[$value[2]] = $value[0];
-                                    break;
-                                }
-                            }
-                        }
-                        if (isset($this->schematics[$key - 1]['schema'][$pos]) && ctype_digit($this->schematics[$key - 1]['schema'][$pos])) {
-                            foreach ($this->schematics[$key - 1]['values'] as $value) {
-                                if (in_array($pos, $value[1])) {
-                                    $hits[$value[2]] = $value[0];
-                                    break;
-                                }
-                            }
-                        }
-                        if (isset($this->schematics[$key - 1]['schema'][$pos + 1]) && ctype_digit($this->schematics[$key - 1]['schema'][$pos + 1])) {
-                            foreach ($this->schematics[$key - 1]['values'] as $value) {
-                                if (in_array($pos + 1, $value[1])) {
-                                    $hits[$value[2]] = $value[0];
-                                    break;
-                                }
-                            }
-                        }
-                    }
-
-                    if (isset($this->schematics[$key]['schema'][$pos - 1]) && ctype_digit($this->schematics[$key]['schema'][$pos - 1])) {
-                        foreach ($this->schematics[$key]['values'] as $value) {
-                            if (in_array($pos - 1, $value[1])) {
-                                $hits[$value[2]] = $value[0];
-                                break;
-                            }
-                        }
-                    }
-                    if (isset($this->schematics[$key]['schema'][$pos]) && ctype_digit($this->schematics[$key]['schema'][$pos])) {
-                        foreach ($this->schematics[$key]['values'] as $value) {
-                            if (in_array($pos, $value[1])) {
-                                $hits[$value[2]] = $value[0];
-                                break;
-                            }
-                        }
-                    }
-                    if (isset($this->schematics[$key]['schema'][$pos + 1]) && ctype_digit($this->schematics[$key]['schema'][$pos + 1])) {
-                        foreach ($this->schematics[$key]['values'] as $value) {
-                            if (in_array($pos + 1, $value[1])) {
-                                $hits[$value[2]] = $value[0];
-                                break;
-                            }
-                        }
-                    }
-
-                    if ($hasAfter) {
-                        if (isset($this->schematics[$key + 1]['schema'][$pos - 1]) && ctype_digit($this->schematics[$key + 1]['schema'][$pos - 1])) {
-                            foreach ($this->schematics[$key + 1]['values'] as $value) {
-                                if (in_array($pos - 1, $value[1])) {
-                                    $hits[$value[2]] = $value[0];
-                                    break;
-                                }
-                            }
-                        }
-                        if (isset($this->schematics[$key + 1]['schema'][$pos]) && ctype_digit($this->schematics[$key + 1]['schema'][$pos])) {
-                            foreach ($this->schematics[$key + 1]['values'] as $value) {
-                                if (in_array($pos, $value[1])) {
-                                    $hits[$value[2]] = $value[0];
-                                    break;
-                                }
-                            }
-                        }
-                        if (isset($this->schematics[$key + 1]['schema'][$pos + 1]) && ctype_digit($this->schematics[$key + 1]['schema'][$pos + 1])) {
-                            foreach ($this->schematics[$key + 1]['values'] as $value) {
-                                if (in_array($pos + 1, $value[1])) {
-                                    $hits[$value[2]] = $value[0];
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        return $hits;
-    }
-
-    private function checkSchematicPart2(): array
-    {
-        $hits = [];
+        $ratioHits = [];
         $ratios = [];
 
         foreach ($this->schematics as $key => $schema) {
             foreach ($schema['schema'] as $pos => $char) {
                 $volatileHits = [];
 
-                if ($char === '*') {
-                    $hasBefore = isset($this->schematics[$key - 1]);
-                    $hasAfter = isset($this->schematics[$key + 1]);
-
-                    if ($hasBefore) {
-                        if (isset($this->schematics[$key - 1]['schema'][$pos - 1]) && ctype_digit($this->schematics[$key - 1]['schema'][$pos - 1])) {
-                            foreach ($this->schematics[$key - 1]['values'] as $value) {
-                                if (in_array($pos - 1, $value[1])) {
-                                    $volatileHits[$value[2]] = $value[0];
-                                    break;
-                                }
-                            }
-                        }
-                        if (isset($this->schematics[$key - 1]['schema'][$pos]) && ctype_digit($this->schematics[$key - 1]['schema'][$pos])) {
-                            foreach ($this->schematics[$key - 1]['values'] as $value) {
-                                if (in_array($pos, $value[1])) {
-                                    $volatileHits[$value[2]] = $value[0];
-                                    break;
-                                }
-                            }
-                        }
-                        if (isset($this->schematics[$key - 1]['schema'][$pos + 1]) && ctype_digit($this->schematics[$key - 1]['schema'][$pos + 1])) {
-                            foreach ($this->schematics[$key - 1]['values'] as $value) {
-                                if (in_array($pos + 1, $value[1])) {
-                                    $volatileHits[$value[2]] = $value[0];
-                                    break;
-                                }
-                            }
-                        }
-                    }
-
-                    if (isset($this->schematics[$key]['schema'][$pos - 1]) && ctype_digit($this->schematics[$key]['schema'][$pos - 1])) {
-                        foreach ($this->schematics[$key]['values'] as $value) {
-                            if (in_array($pos - 1, $value[1])) {
-                                $volatileHits[$value[2]] = $value[0];
-                                break;
-                            }
-                        }
-                    }
-                    if (isset($this->schematics[$key]['schema'][$pos]) && ctype_digit($this->schematics[$key]['schema'][$pos])) {
-                        foreach ($this->schematics[$key]['values'] as $value) {
-                            if (in_array($pos, $value[1])) {
-                                $volatileHits[$value[2]] = $value[0];
-                                break;
-                            }
-                        }
-                    }
-                    if (isset($this->schematics[$key]['schema'][$pos + 1]) && ctype_digit($this->schematics[$key]['schema'][$pos + 1])) {
-                        foreach ($this->schematics[$key]['values'] as $value) {
-                            if (in_array($pos + 1, $value[1])) {
-                                $volatileHits[$value[2]] = $value[0];
-                                break;
-                            }
-                        }
-                    }
-
-                    if ($hasAfter) {
-                        if (isset($this->schematics[$key + 1]['schema'][$pos - 1]) && ctype_digit($this->schematics[$key + 1]['schema'][$pos - 1])) {
-                            foreach ($this->schematics[$key + 1]['values'] as $value) {
-                                if (in_array($pos - 1, $value[1])) {
-                                    $volatileHits[$value[2]] = $value[0];
-                                    break;
-                                }
-                            }
-                        }
-                        if (isset($this->schematics[$key + 1]['schema'][$pos]) && ctype_digit($this->schematics[$key + 1]['schema'][$pos])) {
-                            foreach ($this->schematics[$key + 1]['values'] as $value) {
-                                if (in_array($pos, $value[1])) {
-                                    $volatileHits[$value[2]] = $value[0];
-                                    break;
-                                }
-                            }
-                        }
-                        if (isset($this->schematics[$key + 1]['schema'][$pos + 1]) && ctype_digit($this->schematics[$key + 1]['schema'][$pos + 1])) {
-                            foreach ($this->schematics[$key + 1]['values'] as $value) {
-                                if (in_array($pos + 1, $value[1])) {
-                                    $volatileHits[$value[2]] = $value[0];
+                if (!ctype_digit($char) && $char !== '.') {
+                    foreach ($this->directions as $directions) {
+                        if (isset($this->schematics[$key + ($directions[0])]['schema'][$pos + ($directions[1])]) && ctype_digit($this->schematics[$key + ($directions[0])]['schema'][$pos + ($directions[1])])) {
+                            foreach ($this->schematics[$key + ($directions[0])]['values'] as $value) {
+                                if (in_array($pos + ($directions[1]), $value[1])) {
+                                    $hits[$value[2]] = $value[0];
+                                    if ($char === '*') {
+                                        $volatileHits[$value[2]] = $value[0];
+                                    }
                                     break;
                                 }
                             }
@@ -274,18 +123,18 @@ class AdventCommand extends Command
                 }
 
                 if (count($volatileHits) === 2) {
-                    $hits[] = $volatileHits;
+                    $ratioHits[] = $volatileHits;
                 }
             }
         }
 
-        foreach ($hits as $hit) {
-            $normalizedHit = array_values($hit);
+        foreach ($ratioHits as $rHit) {
+            $normalizedHit = array_values($rHit);
 
             $ratios[] = $normalizedHit[0] * $normalizedHit[1];
         }
 
-        return $ratios;
+        return [$hits, $ratios];
     }
 
     private function readLinesFromFile(string $filepath): Generator
