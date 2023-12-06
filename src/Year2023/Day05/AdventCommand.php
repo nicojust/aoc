@@ -61,7 +61,10 @@ class AdventCommand extends Command
         $output->writeln('');
 
         $lowestLocation = min($this->findSeedLocations($this->seeds));
+        $lowestLocationFull = min($this->findSeedLocationsFull($this->seeds));
+
         $output->writeln(sprintf('<info>Solution 1: %d</info>', $lowestLocation));
+        $output->writeln(sprintf('<info>Solution 2: %d</info>', $lowestLocationFull));
 
         return Command::SUCCESS;
     }
@@ -124,6 +127,78 @@ class AdventCommand extends Command
             }
 
             $locations[] = $seed;
+        }
+
+        return $locations;
+    }
+
+    private function findSeedLocationsFull($seeds = []): array
+    {
+        $locations = [];
+
+        $mapIndex = array_keys($this->maps);
+        $target = count($mapIndex) - 1;
+
+        for ($i = 0; $i < count($seeds); $i += 2) {
+            $queue[] = [
+                'index' => -1,
+                'range' => [
+                    $seeds[$i],
+                    $seeds[$i] + $seeds[$i + 1] - 1
+                ]
+            ];
+        }
+
+        while (!empty($queue)) {
+            $currentRange = array_pop($queue);
+
+            if ($target == $currentRange['index']) {
+                $locations[] = $currentRange['range'][0];
+                continue;
+            }
+
+            foreach ($this->maps[$mapIndex[$currentRange['index'] + 1]]['map'] as $range) {
+                $mapRange = [$range['src'], $range['src'] + $range['range'] - 1];
+
+                if ($currentRange['range'][0] <= $mapRange[1] && $mapRange[0] <= $currentRange['range'][1]) {
+                    $diff = $range['dest'] - $range['src'];
+                    $matchedRange = [
+                        max($currentRange['range'][0], $mapRange[0]),
+                        min($currentRange['range'][1], $mapRange[1]),
+                    ];
+                    $queue[] = [
+                        'index' => $currentRange['index'] + 1,
+                        'range' => array_map(static fn ($range) => $range + $diff, $matchedRange),
+                    ];
+
+                    if ($currentRange['range'][0] < $matchedRange[0]) {
+                        $queue[] = [
+                            'index' => $currentRange['index'],
+                            'range' => [
+                                $currentRange['range'][0],
+                                $matchedRange[0] - 1
+                            ],
+                        ];
+                    }
+
+                    if ($currentRange['range'][1] > $matchedRange[1]) {
+                        $queue[] = [
+                            'index' => $currentRange['index'],
+                            'range' => [
+                                $matchedRange[1] + 1,
+                                $currentRange['range'][1]
+                            ],
+                        ];
+                    }
+
+                    continue 2;
+                }
+            }
+
+            $queue[] = [
+                'index' => $currentRange['index'] + 1,
+                'range' => $currentRange['range']
+            ];
         }
 
         return $locations;
