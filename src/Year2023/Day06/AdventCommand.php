@@ -18,6 +18,9 @@ use Symfony\Component\Console\Input\InputArgument;
 )]
 class AdventCommand extends Command
 {
+    /**
+     * @var int[][]
+     */
     private array $races = [];
 
     protected function configure(): void
@@ -42,10 +45,10 @@ class AdventCommand extends Command
         $output->writeln('');
 
         $races = array_combine($this->races[0], $this->races[1]);
-        $multipliedRaceTimes = array_reduce($this->calulateTimes($races), static fn ($acc, $times) => $acc * count($times), 1);
+        $multipliedRaceTimes = array_reduce($this->calulateTimes($races), static fn (int $acc, array $times) => $acc * count($times), 1);
 
         $race = [(int)implode('', $this->races[0]) => (int)implode('', $this->races[1])];
-        $waysToBeatRecord = count($this->calulateTime($race));
+        $waysToBeatRecord = count($this->calulateTimes($race, false));
 
         $output->writeln(sprintf('<info>Solution 1: %d</info>', $multipliedRaceTimes));
         $output->writeln(sprintf('<info>Solution 2: %d</info>', $waysToBeatRecord));
@@ -61,29 +64,14 @@ class AdventCommand extends Command
         );
     }
 
-    private function calulateTimes(array $races = []): array
+    private function calulateTimes(array $races = [], bool $withKey = true): array
     {
         $times = [];
 
         foreach ($races as $time => $distance) {
             for ($timeHeld = $time; $timeHeld >= 0; $timeHeld--) {
                 if (($time - $timeHeld) * $timeHeld > $distance) {
-                    $times[$time][] = $timeHeld;
-                }
-            }
-        }
-
-        return $times;
-    }
-
-    private function calulateTime(array $race = []): array
-    {
-        $times = [];
-
-        foreach ($race as $time => $distance) {
-            for ($timeHeld = $time; $timeHeld >= 0; $timeHeld--) {
-                if (($time - $timeHeld) * $timeHeld > $distance) {
-                    $times[] = $timeHeld;
+                    $withKey ? $times[$time][] = $timeHeld : $times[] = $timeHeld;
                 }
             }
         }
