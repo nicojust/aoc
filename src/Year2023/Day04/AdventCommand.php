@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Nicojust\AoC\Year2023\Day04;
+namespace NicoJust\AoC\Year2023\Day04;
 
-use Nicojust\AoC\Util;
+use NicoJust\AoC\Util;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;

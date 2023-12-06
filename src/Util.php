@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Nicojust\AoC;
+namespace NicoJust\AoC;
 
 use Generator;
 use SplFileObject;
