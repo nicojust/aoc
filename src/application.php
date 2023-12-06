@@ -19,10 +19,12 @@ use Symfony\Component\Console\Application;
 $application = new Application();
 
 // Register Commands
-$application->add(new Day01Command());
-$application->add(new Day02Command());
-$application->add(new Day03Command());
-$application->add(new Day04Command());
-$application->add(new Day05Command());
+$application->addCommands([
+    new Day01Command(),
+    new Day02Command(),
+    new Day03Command(),
+    new Day04Command(),
+    new Day05Command(),
+]);
 
 $application->run();
