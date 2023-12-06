@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nicojust\Aoc\Year2023\Day01;
 
 use Nicojust\Aoc\Util;
@@ -87,11 +89,11 @@ class AdventCommand extends Command
                 continue;
             }
 
-            if (str_contains($string, $key)) {
-                $pos = strpos($string, $key);
+            if (str_contains($string, (string)$key)) {
+                $pos = strpos($string, (string)$key);
                 while ($pos !== false) {
                     $positions[$key][] = $pos;
-                    $pos = strpos($string, $key, $pos + 1);
+                    $pos = strpos($string, (string)$key, $pos + 1);
                 }
 
                 $cases[$key] = [

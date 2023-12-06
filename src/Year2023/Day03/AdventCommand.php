@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Nicojust\Aoc\Year2023\Day03;
 
 use Nicojust\Aoc\Util;
