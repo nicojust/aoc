@@ -13,6 +13,7 @@ use Nicojust\Aoc\Year2023\{
     Day03\AdventCommand as Day03Command,
     Day04\AdventCommand as Day04Command,
     Day05\AdventCommand as Day05Command,
+    Day06\AdventCommand as Day06Command,
 };
 use Symfony\Component\Console\Application;
 
@@ -25,6 +26,7 @@ $application->addCommands([
     new Day03Command(),
     new Day04Command(),
     new Day05Command(),
+    new Day06Command(),
 ]);
 
 $application->run();
