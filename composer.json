@@ -16,7 +16,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Nicojust\\Aoc\\": "src/"
+      "Nicojust\\AoC\\": "src/"
     }
   },
   "config": {

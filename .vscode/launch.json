@@ -14,7 +14,7 @@
       "name": "Launch application",
       "type": "php",
       "request": "launch",
-      "program": "/home/nicojust/Workspace/aoc/src/application.php",
+      "program": "${workspaceFolder}/src/application.php",
       "args": ["aoc:day:01", "prod"],
       "cwd": "${fileDirname}",
       "port": 0,

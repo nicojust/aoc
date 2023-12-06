@@ -3,11 +3,11 @@
 
 declare(strict_types=1);
 
-namespace Nicojust\Aoc;
+namespace Nicojust\AoC;
 
 require __DIR__ . '../../vendor/autoload.php';
 
-use Nicojust\Aoc\Year2023\{
+use Nicojust\AoC\Year2023\{
     Day01\AdventCommand as Day01Command,
     Day02\AdventCommand as Day02Command,
     Day03\AdventCommand as Day03Command,
