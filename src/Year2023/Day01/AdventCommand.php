@@ -43,13 +43,7 @@ class AdventCommand extends Command
     protected function configure(): void
     {
         $this
-            ->addArgument(Util::ENV, InputArgument::OPTIONAL, 'test or prod')
-            ->addOption(
-                'digits',
-                'd',
-                InputOption::VALUE_NONE,
-                'Only use Digits'
-            );
+            ->addArgument(Util::ENV, InputArgument::OPTIONAL, 'test or prod');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -57,24 +51,27 @@ class AdventCommand extends Command
         if (!Util::fileExists($input, $output, __DIR__)) {
             return Command::FAILURE;
         }
-        $onlyDigits = $input->getOption('digits');
 
-        $complete = 0;
+        $calibrationSum = 0;
+        $calibrationSumWithWords = 0;
         foreach (Util::readLine(Util::getFilePath($input, __DIR__)) as $line) {
             $output->write(sprintf('<comment>%s</comment>', $line));
 
-            $numbers = $this->getValueFromCase($line, $onlyDigits);
+            $numbers = $this->getValueFromCase($line, true);
             reset($numbers);
             $number = current($numbers) . end($numbers);
 
-            $output->write(sprintf('<comment>%s</comment>', print_r($numbers, true)));
-            $output->write(sprintf('<comment>%s</comment>', $number));
+            $numbersWithWords = $this->getValueFromCase($line, false);
+            reset($numbersWithWords);
+            $numberWithWord = current($numbersWithWords) . end($numbersWithWords);
 
-            $complete += (int)$number;
+            $calibrationSum += (int)$number;
+            $calibrationSumWithWords += (int)$numberWithWord;
         }
         $output->writeln('');
 
-        $output->writeln(sprintf('<info>Solution: %s</info>', $complete));
+        $output->writeln(sprintf('<info>Solution 1: %s</info>', $calibrationSum));
+        $output->writeln(sprintf('<info>Solution 2: %s</info>', $calibrationSumWithWords));
 
         return Command::SUCCESS;
     }
