@@ -12,9 +12,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 
 #[AsCommand(
-    name: 'aoc:day:06',
-    description: 'Day 6: Wait For It',
-    aliases: ['aoc:day6']
+    name: 'aoc:year:23:day:06',
+    description: 'Day 6: Wait For It (https://adventofcode.com/2023/day/6)',
+    aliases: ['aoc:year:23:day:6', 'aoc:year:1:day:6'],
 )]
 class AdventCommand extends Command
 {

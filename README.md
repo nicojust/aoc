@@ -5,5 +5,5 @@
 ## How to
 
 ```sh
-make run command="aoc:day:01" env="prod"
+make run command="aoc:year:23:day:01" env="prod"
 ```
