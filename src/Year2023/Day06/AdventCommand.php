@@ -45,10 +45,10 @@ class AdventCommand extends Command
         $output->writeln('');
 
         $races = array_combine($this->races[0], $this->races[1]);
-        $multipliedRaceTimes = array_reduce($this->calulateTimes($races), static fn (int $acc, array $times) => $acc * count($times), 1);
+        $multipliedRaceTimes = array_reduce($this->calculateTimes($races), static fn (int $acc, array $times) => $acc * count($times), 1);
 
         $race = [(int)implode('', $this->races[0]) => (int)implode('', $this->races[1])];
-        $waysToBeatRecord = count($this->calulateTimes($race, false));
+        $waysToBeatRecord = count($this->calculateTimes($race, false));
 
         $output->writeln(sprintf('<info>Solution 1: %d</info>', $multipliedRaceTimes));
         $output->writeln(sprintf('<info>Solution 2: %d</info>', $waysToBeatRecord));
@@ -64,7 +64,7 @@ class AdventCommand extends Command
         );
     }
 
-    private function calulateTimes(array $races = [], bool $withKey = true): array
+    private function calculateTimes(array $races = [], bool $withKey = true): array
     {
         $times = [];
 
