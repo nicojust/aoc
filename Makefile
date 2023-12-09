@@ -1,6 +1,6 @@
 .PHONY: run run-all
 
-command ?= aoc:day:01
+command ?= aoc:year:23:day:01
 env ?= prod
 
 run:
