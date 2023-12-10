@@ -72,19 +72,8 @@ class AdventCommand extends Command
         // holy mother of god
         ini_set('xdebug.max_nesting_level', -1);
 
-        $visited = $this->walkLoop($this->grid, $this->startCoords, [], 0, false);
-        $visitedRev = $this->walkLoop($this->grid, $this->startCoords, [], 0, true);
-
-        foreach ($visited as $key => $dir) {
-            if ($key === 0) {
-                continue;
-            }
-
-            if ($visitedRev[$key] === $dir) {
-                $farthestSteps = $key;
-                break;
-            }
-        }
+        $visited = $this->walkLoop($this->grid, $this->startCoords, []);
+        $farthestSteps = count($visited) / 2;
 
         $output->writeln(sprintf('<info>Solution 1: %d</info>', $farthestSteps));
 
@@ -155,35 +144,31 @@ class AdventCommand extends Command
         return [$connections, $tileCoords];
     }
 
-    private function walkLoop(array $grid, array $coords, array $visited, int $currentSteps, bool $reverse = false): array
+    private function walkLoop(array $grid, array $coords, array $visited): array
     {
         [$y, $x] = $coords;
 
-        while ($this->startCoords !== $coords || $currentSteps === 0) {
+        while ($this->startCoords !== $coords || count($visited) < count($grid)) {
             $tile = $grid[$y][$x];
-
-            if (is_array($tile)) {
-                $visited[] = [$y, $x];
-
-                if ($reverse) {
-                    $tile = array_reverse($tile);
-                }
-
-                foreach ($tile as $dir) {
-                    [$a, $b] = $dir;
-
-                    $ya = $y + ($a);
-                    $xb = $x + ($b);
-
-                    if (!isset($grid[$ya][$xb]) || in_array([$ya, $xb], $visited, true)) {
-                        continue;
-                    }
-
-                    return $this->walkLoop($this->grid, [$ya, $xb], $visited, ++$currentSteps, $reverse);
-                }
-
-                return $this->walkLoop($this->grid, $this->startCoords, $visited, ++$currentSteps, $reverse);
+            if (!is_array($tile)) {
+                continue;
             }
+            $visited[] = [$y, $x];
+
+            foreach ($tile as $dir) {
+                [$a, $b] = $dir;
+
+                $ya = $y + ($a);
+                $xb = $x + ($b);
+
+                if (!isset($grid[$ya][$xb]) || in_array([$ya, $xb], $visited, true)) {
+                    continue;
+                }
+
+                return $this->walkLoop($this->grid, [$ya, $xb], $visited);
+            }
+
+            return $this->walkLoop($this->grid, $this->startCoords, $visited);
         }
 
         return $visited;
