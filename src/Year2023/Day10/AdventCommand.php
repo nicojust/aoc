@@ -58,6 +58,7 @@ class AdventCommand extends Command
         }
 
         $farthestSteps = 0;
+        $tilesWithinLoop = 0;
         foreach (Util::readLine(Util::getFilePath($input, __DIR__)) as $line) {
             $output->write(sprintf('<comment>%s</comment>', $line));
 
@@ -76,6 +77,7 @@ class AdventCommand extends Command
         $farthestSteps = count($visited) / 2;
 
         $output->writeln(sprintf('<info>Solution 1: %d</info>', $farthestSteps));
+        $output->writeln(sprintf('<info>Solution 2: %d</info>', $tilesWithinLoop));
 
         return Command::SUCCESS;
     }
