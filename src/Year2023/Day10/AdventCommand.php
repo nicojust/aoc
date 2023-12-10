@@ -41,6 +41,15 @@ class AdventCommand extends Command
         'S' => true,
     ];
 
+    private const TILES_UNICODE = [
+        '|' => '│',
+        '-' => '─',
+        'L' => '└',
+        'J' => '┘',
+        '7' => '┐',
+        'F' => '┌',
+    ];
+
     private array $grid = [];
     private array $startTile = [];
     private array $startCoords = [];
@@ -60,7 +69,7 @@ class AdventCommand extends Command
         $farthestSteps = 0;
         $tilesWithinLoop = 0;
         foreach (Util::readLine(Util::getFilePath($input, __DIR__)) as $line) {
-            $output->write(sprintf('<comment>%s</comment>', $line));
+            $output->write(sprintf('%s', $this->parseGridUnicode($line)));
 
             $this->createGrid($line);
         }
@@ -92,6 +101,14 @@ class AdventCommand extends Command
         }
 
         $this->grid[] = $pipes;
+    }
+
+    private function parseGridUnicode(string $line): string
+    {
+        $search = array_keys(self::TILES_UNICODE);
+        $replace = array_map(static fn (string $u) => sprintf('<comment>%s</comment>', $u), array_values(self::TILES_UNICODE));
+
+        return str_replace($search, $replace, $line);
     }
 
     private function createStartTile(array $grid = []): array
