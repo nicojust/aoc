@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "aoc_2024"
+version = "0.1.0"
+description = "Advent of Code - 2024"
+authors = ["Nekwo <just.nico@yahoo.de>"]
+readme = "README.md"
+packages = [{ include = "src/Year2024/*.py" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+typer = "^0.14.0"
+colorama = "^0.4.6"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.10.0"
+mypy = "^1.13.0"
+isort = "^5.13.2"
+ruff = "^0.8.1"
+toml-sort = "^0.24.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
