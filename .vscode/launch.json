@@ -14,7 +14,7 @@
       "name": "Launch application",
       "type": "php",
       "request": "launch",
-      "program": "${workspaceFolder}/src/application.php",
+      "program": "${workspaceFolder}/src/Year2023/application.php",
       "args": ["aoc:year:23:day:01", "prod"],
       "cwd": "${fileDirname}",
       "port": 0,

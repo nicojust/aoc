@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NicoJust\AoC\Year2023\Day06;
 
-use NicoJust\AoC\Util;
+use NicoJust\AoC\Year2023\Util;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -45,7 +45,7 @@ class AdventCommand extends Command
         $output->writeln('');
 
         $races = array_combine($this->races[0], $this->races[1]);
-        $multipliedRaceTimes = array_reduce($this->calculateTimes($races), static fn (int $acc, array $times) => $acc * count($times), 1);
+        $multipliedRaceTimes = array_reduce($this->calculateTimes($races), static fn(int $acc, array $times) => $acc * count($times), 1);
 
         $race = [(int)implode('', $this->races[0]) => (int)implode('', $this->races[1])];
         $waysToBeatRecord = count($this->calculateTimes($race, false));
@@ -60,7 +60,7 @@ class AdventCommand extends Command
     {
         $replace = str_contains($line, 'Time:') ? 'Time:' : 'Distance:';
         $this->races[$key] = array_values(
-            array_map('intval', array_filter(explode(' ', str_replace($replace, '', $line)), static fn ($time) => $time !== ''))
+            array_map('intval', array_filter(explode(' ', str_replace($replace, '', $line)), static fn($time) => $time !== ''))
         );
     }
 

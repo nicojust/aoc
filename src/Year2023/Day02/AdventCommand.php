@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NicoJust\AoC\Year2023\Day02;
 
-use NicoJust\AoC\Util;
+use NicoJust\AoC\Year2023\Util;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;

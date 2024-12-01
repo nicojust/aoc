@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NicoJust\AoC\Year2023\Day08;
 
-use NicoJust\AoC\Util;
+use NicoJust\AoC\Year2023\Util;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -107,7 +107,7 @@ class AdventCommand extends Command
     private function walkNodesSimultaneously(array $network = [], array $steps): array
     {
         $stepsTakenSimultaneously = [];
-        $currentNodes = array_filter($network, static fn (string $node) => substr($node, -1) === 'A', ARRAY_FILTER_USE_KEY);
+        $currentNodes = array_filter($network, static fn(string $node) => substr($node, -1) === 'A', ARRAY_FILTER_USE_KEY);
 
         foreach ($currentNodes as $node => $childNode) {
             $currentNode = $node;
