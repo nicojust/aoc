@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NicoJust\AoC\Year2023\Day07;
 
-use NicoJust\AoC\Util;
+use NicoJust\AoC\Year2023\Util;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -64,14 +64,14 @@ class AdventCommand extends Command
 
         $sortedHands = $this->sortHands($this->hands);
         $points = array_sum(array_map(
-            static fn (array $hand, int $multiplier)  => ((int)$hand[1] * ($multiplier + 1)),
+            static fn(array $hand, int $multiplier)  => ((int)$hand[1] * ($multiplier + 1)),
             $sortedHands,
             array_keys(array_values($sortedHands))
         ));
 
         $sortedWildcardHands = $this->sortHands($this->wildcardHands, true);
         $wildcardPoints = array_sum(array_map(
-            static fn (array $hand, int $multiplier)  => ((int)$hand[1] * ($multiplier + 1)),
+            static fn(array $hand, int $multiplier)  => ((int)$hand[1] * ($multiplier + 1)),
             $sortedWildcardHands,
             array_keys(array_values($sortedWildcardHands))
         ));

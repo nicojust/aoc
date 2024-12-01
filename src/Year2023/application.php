@@ -3,9 +3,9 @@
 
 declare(strict_types=1);
 
-namespace NicoJust\AoC;
+namespace NicoJust\AoC\Year2023;
 
-require __DIR__ . '../../vendor/autoload.php';
+require __DIR__ . '../../../vendor/autoload.php';
 
 use NicoJust\AoC\Year2023\{
     Day01\AdventCommand as Day01Command,

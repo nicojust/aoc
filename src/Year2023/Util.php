@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NicoJust\AoC;
+namespace NicoJust\AoC\Year2023;
 
 use Generator;
 use SplFileObject;
