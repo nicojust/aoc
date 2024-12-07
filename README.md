@@ -7,7 +7,7 @@
 ### Run
 
 ```sh
-make run command="aoc:year:23:day:01" env="prod"
+./run.sh php 1 2023 prod
 ```
 
 ## 2024 [python]
@@ -29,5 +29,5 @@ make run command="aoc:year:23:day:01" env="prod"
 ### Run
 
 ```sh
-poetry run python src/Year2024/aoc.py 1 2024 prod
+./run.sh python 1 2024 prod
 ```
