@@ -6,6 +6,8 @@ from colorama import Fore
 
 class Environment(str, Enum):
     test = "test"
+    tes1 = "test1"
+    tes2 = "test2"
     prod = "prod"
 
 
